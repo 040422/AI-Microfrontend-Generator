@@ -12,18 +12,7 @@ const Generator = () => {
       return;
     }
 
-    // Simulate AI generation - replace with actual API call in production
     try {
-      // This would be your actual API call:
-      // const response = await fetch("/api/generate", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({ description })
-      // });
-      // const data = await response.json();
-      // setGeneratedCode(data.code);
-
-      // Mock response for demonstration
       setTimeout(() => {
         const mockCode = `// ${description}
 import React from 'react';
