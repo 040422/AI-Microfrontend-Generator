@@ -1,93 +1,98 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./generator.css";
 
 const Generator = () => {
-  const [componentName, setComponentName] = useState("");
   const [description, setDescription] = useState("");
-  const [style, setStyle] = useState("");
-  const [functionality, setFunctionality] = useState("");
   const [generatedCode, setGeneratedCode] = useState("");
-
-  const navigate = useNavigate();
+  const [isCopied, setIsCopied] = useState(false);
 
   const handleGenerate = async () => {
-    if (!componentName || !description || !style || !functionality) {
-      alert("Please fill in all fields before generating.");
+    if (!description.trim()) {
+      alert("Please enter a component description");
       return;
     }
 
+    // Simulate AI generation - replace with actual API call in production
     try {
-      const response = await fetch("http://localhost:3001/api/component/generate", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          componentName,
-          description,
-          style,
-          functionality,
-        }),
-      });
+      // This would be your actual API call:
+      // const response = await fetch("/api/generate", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({ description })
+      // });
+      // const data = await response.json();
+      // setGeneratedCode(data.code);
 
-      const data = await response.json();
-      if (data.code) {
-        setGeneratedCode(data.code);
-      } else {
-        alert("Failed to generate code");
-      }
+      // Mock response for demonstration
+      setTimeout(() => {
+        const mockCode = `// ${description}
+import React from 'react';
+import './GeneratedComponent.css';
+
+const GeneratedComponent = () => {
+  return (
+    <div className="container">
+      <h1>Generated Component</h1>
+      <p>This component was created based on your description:</p>
+      <blockquote>"${description}"</blockquote>
+    </div>
+  );
+};
+
+export default GeneratedComponent;`;
+        setGeneratedCode(mockCode);
+      }, 1000);
     } catch (error) {
-      console.error("Error:", error);
-      alert("Server error");
+      console.error("Generation error:", error);
+      alert("Error generating component");
     }
   };
 
+  const handleCopy = () => {
+    if (!generatedCode) return;
+    navigator.clipboard.writeText(generatedCode);
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
+  };
+
+  const handleDownload = () => {
+    if (!generatedCode) return;
+    const element = document.createElement("a");
+    const file = new Blob([generatedCode], { type: "text/plain" });
+    element.href = URL.createObjectURL(file);
+    element.download = "generated-component.js";
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  };
+
+  const handleExportZip = () => {
+    if (!generatedCode) return;
+    alert("In a real implementation, this would export a ZIP file containing:\n- Component.js\n- Component.css\n- package.json");
+  };
+
   return (
-    <div className="generator-container">
-      {/* Buttons */}
-      <div className="auth-buttons">
-        <button onClick={() => navigate("/login")}>Login</button>
-        <button onClick={() => navigate("/signup")}>Signup</button>
-      </div>
-
-      <h1 className="generator-heading">Component & Multi Component Generator </h1>
-
-      <input
-        className="generator-input"
-        placeholder="Component Name"
-        value={componentName}
-        onChange={(e) => setComponentName(e.target.value)}
-      />
-      <input
-        className="generator-input"
-        placeholder="Description"
+    <div className="generator-app">
+      <h1>AI Microfrontend Generator</h1>
+      
+      <textarea
         value={description}
         onChange={(e) => setDescription(e.target.value)}
+        placeholder="Enter component description..."
       />
-      <input
-        className="generator-input"
-        placeholder="Style (e.g. card, button)"
-        value={style}
-        onChange={(e) => setStyle(e.target.value)}
-      />
-      <input
-        className="generator-input"
-        placeholder="Functionality (e.g. hover, click)"
-        value={functionality}
-        onChange={(e) => setFunctionality(e.target.value)}
-      />
-
-      <button className="generator-button" onClick={handleGenerate}>
-        Generate
-      </button>
-
-      {generatedCode && (
-        <div>
-          <h3>Generated Code:</h3>
-          <pre className="generator-code">{generatedCode}</pre>
-        </div>
-      )}
+      
+      <div className="action-buttons">
+        <button onClick={handleGenerate}>Generate</button>
+        <button onClick={handleCopy} disabled={!generatedCode}>
+          {isCopied ? "Copied!" : "Copy"}
+        </button>
+        <button onClick={handleDownload} disabled={!generatedCode}>Download</button>
+        <button onClick={handleExportZip} disabled={!generatedCode}>Export ZIP</button>
+      </div>
+      
+      <div className="code-preview">
+        <pre>{generatedCode || "// Generated code will appear here"}</pre>
+      </div>
     </div>
   );
 };
