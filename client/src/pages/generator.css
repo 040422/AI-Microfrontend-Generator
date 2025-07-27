@@ -1,81 +1,73 @@
-/* generator.css */
-
-body {
-  background-color: #1e1e1e;
-  color: #ffffff;
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+.generator-app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.generator-container {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
-  background-color: #2c2c2c;
-  border-radius: 12px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
-}
-
-.generator-heading {
-  font-size: 24px;
-  margin-bottom: 20px;
+.generator-app h1 {
   text-align: center;
-  color: #00ff99;
+  color: #2c3e50;
+  margin-bottom: 2rem;
 }
 
-.generator-input {
+.generator-app textarea {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border-radius: 6px;
-  border: none;
-  background-color: #3a3a3a;
-  color: #fff;
+  height: 120px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  resize: vertical;
 }
 
-.generator-button {
-  width: 100%;
-  padding: 12px;
-  background-color: #00ff99;
-  color: #1e1e1e;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-bottom: 20px;
-}
-
-.generator-button:hover {
-  background-color: #00cc77;
-}
-
-.auth-buttons {
+.action-buttons {
   display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
 }
 
-.auth-buttons button {
-  background-color: #444;
-  color: #fff;
+.action-buttons button {
+  padding: 0.5rem 1rem;
   border: none;
-  padding: 8px 14px;
-  border-radius: 6px;
+  border-radius: 4px;
+  background-color: #3498db;
+  color: white;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s;
 }
 
-.auth-buttons button:hover {
-  background-color: #666;
+.action-buttons button:hover {
+  background-color: #2980b9;
 }
 
-.generator-code {
-  background-color: #1a1a1a;
-  color: #00ff99;
-  padding: 15px;
-  border-radius: 6px;
+.action-buttons button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+.action-buttons button:first-child {
+  background-color: #2ecc71;
+}
+
+.action-buttons button:first-child:hover {
+  background-color: #27ae60;
+}
+
+.code-preview {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1rem;
   overflow-x: auto;
+}
+
+.code-preview pre {
+  margin: 0;
+  white-space: pre-wrap;
   font-family: 'Courier New', Courier, monospace;
+  color: #333;
 }
