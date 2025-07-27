@@ -13,7 +13,7 @@ const Login = () => {
     setMsg('');
 
     try {
-      const res = await fetch('http://localhost:3001/api/users/login', {
+      const res = await fetch('http://localhost:3001/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -22,7 +22,7 @@ const Login = () => {
       const data = await res.json();
       if (res.ok) {
         localStorage.setItem('token', data.token);
-        navigate('/');
+        navigate('/generator');
       } else {
         setMsg(data.message || 'Login failed');
       }

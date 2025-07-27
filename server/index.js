@@ -1,8 +1,10 @@
+// index.js
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-import componentRoutes from "./routes/componentRoutes.js"; // ✅ Add this
+import componentRoutes from "./routes/componentRoutes.js";
+import authRoutes from "./routes/authRoutes.js"; // ✅ Import this
 
 dotenv.config();
 
@@ -12,7 +14,8 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/component", componentRoutes); // ✅ Mount route
+app.use("/api/component", componentRoutes);
+app.use("/api/auth", authRoutes); // ✅ Mount authRoutes
 
 app.get("/", (req, res) => {
   res.send("Server is running & connected to MongoDB Atlas!");

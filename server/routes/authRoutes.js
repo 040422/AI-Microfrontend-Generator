@@ -1,8 +1,7 @@
-// server/routes/authRoutes.js
 import express from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import User from "../models/user.js";
+import User from "../models/user.js"; 
 
 const router = express.Router();
 
@@ -15,8 +14,8 @@ router.post("/signup", async (req, res) => {
       return res.status(400).json({ message: "User already exists" });
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ name, email, password: hashedPassword });
-    await user.save();
+    const newUser = new User({ name, email, password: hashedPassword });
+    await newUser.save();
 
     res.status(201).json({ message: "User created successfully" });
   } catch (err) {
