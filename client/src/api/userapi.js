@@ -1,7 +1,7 @@
-// server/routes/userapi.js
+
 const express = require('express');
 const router = express.Router();
-const User = require('../models/User'); // Mongoose model
+const User = require('../models/User'); 
 
 router.post('/signup', async (req, res) => {
   const { username, email, password } = req.body;
