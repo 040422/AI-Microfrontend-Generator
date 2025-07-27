@@ -51,7 +51,7 @@ const Generator = () => {
         <button onClick={() => navigate("/signup")}>Signup</button>
       </div>
 
-      <h1 className="generator-heading">AI Component Generator</h1>
+      <h1 className="generator-heading">Component & Multi Component Generator </h1>
 
       <input
         className="generator-input"

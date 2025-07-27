@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./app.css";
 import { useNavigate } from "react-router-dom"; // ⬅️ Add this
 
-function App() {
+function Home() {
   const [description, setDescription] = useState("");
   const [output, setOutput] = useState("// Generated code will appear here");
   const navigate = useNavigate(); // ⬅️ Initialize navigation
@@ -60,4 +60,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;

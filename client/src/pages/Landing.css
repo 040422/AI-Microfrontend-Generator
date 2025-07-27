@@ -1,0 +1,54 @@
+/* Landing.css */
+
+.landing-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 100vh;
+  background-color: #121212; 
+}
+
+.btn {
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+
+.btn:first-child {
+  background-color: #1db954; 
+}
+
+
+.btn:last-child {
+  background-color: #3f51b5; 
+}
+.main-heading{
+    font-size: 48px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;   
+    align-items: center;       
+    height: 100vh;   
+}
+.landing-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('../assets/image.png') no-repeat center center/cover;
+  position: relative;
+  text-align: center;
+  color: white;
+}
