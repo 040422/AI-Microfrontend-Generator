@@ -1,0 +1,50 @@
+body {
+  background: #0f1117;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+  padding: 40px;
+  width: 80%;
+  max-width: 600px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+textarea {
+  width: 100%;
+  height: 120px;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  resize: none;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #00bfa6;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+pre {
+  background-color: #1e1e2f;
+  padding: 15px;
+  border-radius: 10px;
+  white-space: pre-wrap;
+  margin-top: 20px;
+}
